@@ -8,6 +8,7 @@ class Spacecraft
     @direction = { left: l, front: f, right: r }
   end
 
+  # commands will be like this ["f", "r", "u", "b", "l"]
   def execute(commands)
     commands.each do |command|
       process(command)
@@ -21,7 +22,7 @@ class Spacecraft
     case command
     when 'f', 'b'
       move(command)
-    when 'r', 'l', 'u'
+    when 'r', 'l', 'u', 'd'
       turn(command)
     end
   end
@@ -69,6 +70,8 @@ class Spacecraft
       turn_left
     when 'u'
       turn_up
+    when 'd'
+      turn_down
     end
   end
 
@@ -149,6 +152,76 @@ class Spacecraft
       when 'S'
         @direction[:front] = 'E'
       when 'E'
+        @direction[:front] = 'N'
+      end
+    end
+  end
+
+  def turn_down
+    if @direction[:left] == 'W'
+      case @direction[:front]
+      when 'N'
+        @direction[:front] = 'D'
+      when 'D'
+        @direction[:front] = 'S'
+      when 'S'
+        @direction[:front] = 'U'
+      when 'U'
+        @direction[:front] = 'N'
+      end
+    elsif @direction[:left] == 'N'
+      case @direction[:front]
+      when 'E'
+        @direction[:front] = 'D'
+      when 'D'
+        @direction[:front] = 'W'
+      when 'W'
+        @direction[:front] = 'U'
+      when 'U'
+        @direction[:front] = 'E'
+      end
+    elsif @direction[:left] == 'E'
+      case @direction[:front]
+      when 'S'
+        @direction[:front] = 'D'
+      when 'D'
+        @direction[:front] = 'N'
+      when 'N'
+        @direction[:front] = 'U'
+      when 'U'
+        @direction[:front] = 'S'
+      end
+    elsif @direction[:left] == 'S'
+      case @direction[:front]
+      when 'W'
+        @direction[:front] = 'D'
+      when 'D'
+        @direction[:front] = 'E'
+      when 'E'
+        @direction[:front] = 'U'
+      when 'U'
+        @direction[:front] = 'W'
+      end
+    elsif @direction[:left] == 'U'
+      case @direction[:front]
+      when 'N'
+        @direction[:front] = 'W'
+      when 'W'
+        @direction[:front] = 'S'
+      when 'S'
+        @direction[:front] = 'E'
+      when 'E'
+        @direction[:front] = 'N'
+      end
+    elsif @direction[:left] == 'D'
+      case @direction[:front]
+      when 'N'
+        @direction[:front] = 'E'
+      when 'E'
+        @direction[:front] = 'S'
+      when 'S'
+        @direction[:front] = 'W'
+      when 'W'
         @direction[:front] = 'N'
       end
     end
