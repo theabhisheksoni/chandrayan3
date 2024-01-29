@@ -9,67 +9,135 @@ describe Spacecraft do
 end
 
 describe '#execute' do
-  it 'moves spacecraft based on commands' do
-    spacecraft = Spacecraft.new(0, 0, 0, 'l', 'N', 'r')
+  context "when moving forward" do
+    it 'moves spacecraft based on commands' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'N', 'r')
 
-    commands = ['f']
+      commands = ['f']
 
-    spacecraft.execute(commands)
+      spacecraft.execute(commands)
 
-    expected_position = [0, 1, 0]
-    expected_direction = 'N'
+      expected_position = [0, 1, 0]
+      expected_direction = 'N'
 
-    expect(spacecraft.position).to eq(expected_position)
-    expect(spacecraft.direction[:front]).to eq(expected_direction)
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
+
+    it 'moves spacecraft forward to east' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'E', 'r')
+      commands = ['f']
+      spacecraft.execute(commands)
+      expected_position = [1, 0, 0]
+      expected_direction = 'E'
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
+
+    it 'moves spacecraft forward to south' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'S', 'r')
+      commands = ['f']
+      spacecraft.execute(commands)
+      expected_position = [0, -1, 0]
+      expected_direction = 'S'
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
+
+    it 'moves spacecraft westward' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'W', 'r')
+      commands = ['f']
+      spacecraft.execute(commands)
+      expected_position = [-1, 0, 0]
+      expected_direction = 'W'
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
+
+    it 'moves spacecraft upward' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'U', 'r')
+      commands = ['f']
+      spacecraft.execute(commands)
+      expected_position = [0, 0, 1]
+      expected_direction = 'U'
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
+
+    it 'moves spacecraft downward' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'D', 'r')
+      commands = ['f']
+      spacecraft.execute(commands)
+      expected_position = [0, 0, -1]
+      expected_direction = 'D'
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
   end
 
-  it 'moves spacecraft forward to east' do
-    spacecraft = Spacecraft.new(0, 0, 0, 'l', 'E', 'r')
-    commands = ['f']
-    spacecraft.execute(commands)
-    expected_position = [1, 0, 0]
-    expected_direction = 'E'
-    expect(spacecraft.position).to eq(expected_position)
-    expect(spacecraft.direction[:front]).to eq(expected_direction)
-  end
+  context "when moving backward" do
+    it 'moves spacecraft to north' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'N', 'r')
 
-  it 'moves spacecraft forward to south' do
-    spacecraft = Spacecraft.new(0, 0, 0, 'l', 'S', 'r')
-    commands = ['f']
-    spacecraft.execute(commands)
-    expected_position = [0, -1, 0]
-    expected_direction = 'S'
-    expect(spacecraft.position).to eq(expected_position)
-    expect(spacecraft.direction[:front]).to eq(expected_direction)
-  end
+      commands = ['b']
 
-  it 'moves spacecraft westward' do
-    spacecraft = Spacecraft.new(0, 0, 0, 'l', 'W', 'r')
-    commands = ['f']
-    spacecraft.execute(commands)
-    expected_position = [-1, 0, 0]
-    expected_direction = 'W'
-    expect(spacecraft.position).to eq(expected_position)
-    expect(spacecraft.direction[:front]).to eq(expected_direction)
-  end
+      spacecraft.execute(commands)
 
-  it 'moves spacecraft upward' do
-    spacecraft = Spacecraft.new(0, 0, 0, 'l', 'U', 'r')
-    commands = ['f']
-    spacecraft.execute(commands)
-    expected_position = [0, 0, 1]
-    expected_direction = 'U'
-    expect(spacecraft.position).to eq(expected_position)
-    expect(spacecraft.direction[:front]).to eq(expected_direction)
-  end
+      expected_position = [0, -1, 0]
+      expected_direction = 'N'
 
-  it 'moves spacecraft downward' do
-    spacecraft = Spacecraft.new(0, 0, 0, 'l', 'D', 'r')
-    commands = ['f']
-    spacecraft.execute(commands)
-    expected_position = [0, 0, -1]
-    expected_direction = 'D'
-    expect(spacecraft.position).to eq(expected_position)
-    expect(spacecraft.direction[:front]).to eq(expected_direction)
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
+
+    it 'moves spacecraft to east' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'E', 'r')
+      commands = ['b']
+      spacecraft.execute(commands)
+      expected_position = [-1, 0, 0]
+      expected_direction = 'E'
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
+
+    it 'moves spacecraft to south' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'S', 'r')
+      commands = ['b']
+      spacecraft.execute(commands)
+      expected_position = [0, 1, 0]
+      expected_direction = 'S'
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
+
+    it 'moves spacecraft to west' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'W', 'r')
+      commands = ['b']
+      spacecraft.execute(commands)
+      expected_position = [1, 0, 0]
+      expected_direction = 'W'
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
+
+    it 'moves spacecraft up' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'U', 'r')
+      commands = ['b']
+      spacecraft.execute(commands)
+      expected_position = [0, 0, -1]
+      expected_direction = 'U'
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
+
+    it 'moves spacecraft down' do
+      spacecraft = Spacecraft.new(0, 0, 0, 'l', 'D', 'r')
+      commands = ['b']
+      spacecraft.execute(commands)
+      expected_position = [0, 0, 1]
+      expected_direction = 'D'
+      expect(spacecraft.position).to eq(expected_position)
+      expect(spacecraft.direction[:front]).to eq(expected_direction)
+    end
   end
 end
