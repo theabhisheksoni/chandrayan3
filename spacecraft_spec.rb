@@ -258,4 +258,238 @@ describe '#turn' do
       expect(spacecraft.direction[:front]).to eq(expected_direction)
     end
   end
+
+  context 'turn Up' do
+    context "turn up from North" do
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'W', 'N', 'E')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'U'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'W', 'U', 'E')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'S'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'W', 'S', 'E')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'D'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'W', 'D', 'E')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'N'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+    end
+
+    context 'turn up from East' do
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'N', 'E', 'S')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'U'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'N', 'U', 'S')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'W'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'N', 'W', 'S')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'D'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'N', 'D', 'S')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'E'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+    end
+
+    context 'turn up from South' do
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'E', 'S', 'W')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'U'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'E', 'U', 'W')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'N'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'E', 'N', 'W')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'D'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'E', 'D', 'W')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'S'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+    end
+
+    context 'turn up from West' do
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'S', 'W', 'N')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'U'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'S', 'U', 'N')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'E'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'S', 'E', 'N')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'D'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+
+      it 'turns spacecraft upwards' do
+        spacecraft = Spacecraft.new(0, 0, 0, 'S', 'D', 'N')
+
+        commands = ['u']
+
+        spacecraft.execute(commands)
+
+        expected_position = [0, 0, 0]
+        expected_direction = 'W'
+
+        expect(spacecraft.position).to eq(expected_position)
+        expect(spacecraft.direction[:front]).to eq(expected_direction)
+      end
+    end
+  end
 end
