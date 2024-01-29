@@ -21,7 +21,7 @@ class Spacecraft
     case command
     when 'f', 'b'
       move(command)
-    when 'r'
+    when 'r', 'l'
       turn(command)
     end
   end
@@ -65,6 +65,8 @@ class Spacecraft
     case command
     when 'r'
       turn_right
+    when 'l'
+      turn_left
     end
   end
 
@@ -72,6 +74,12 @@ class Spacecraft
     @direction[:left] = @direction[:front]
     @direction[:front] = @direction[:right]
     @direction[:right] = opposite(@direction[:left])
+  end
+
+  def turn_left
+    @direction[:right] = @direction[:front]
+    @direction[:front] = @direction[:left]
+    @direction[:left] = opposite(@direction[:right])
   end
 
   def opposite(dir)
