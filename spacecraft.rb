@@ -21,7 +21,7 @@ class Spacecraft
     case command
     when 'f', 'b'
       move(command)
-    when 'r', 'l'
+    when 'r', 'l', 'u'
       turn(command)
     end
   end
@@ -67,6 +67,8 @@ class Spacecraft
       turn_right
     when 'l'
       turn_left
+    when 'u'
+      turn_up
     end
   end
 
@@ -80,6 +82,76 @@ class Spacecraft
     @direction[:right] = @direction[:front]
     @direction[:front] = @direction[:left]
     @direction[:left] = opposite(@direction[:right])
+  end
+
+  def turn_up
+    if @direction[:left] == 'W'
+      case @direction[:front]
+      when 'N'
+        @direction[:front] = 'U'
+      when 'U'
+        @direction[:front] = 'S'
+      when 'S'
+        @direction[:front] = 'D'
+      when 'D'
+        @direction[:front] = 'N'
+      end
+    elsif @direction[:left] == 'N'
+      case @direction[:front]
+      when 'E'
+        @direction[:front] = 'U'
+      when 'U'
+        @direction[:front] = 'W'
+      when 'W'
+        @direction[:front] = 'D'
+      when 'D'
+        @direction[:front] = 'E'
+      end
+    elsif @direction[:left] == 'E'
+      case @direction[:front]
+      when 'S'
+        @direction[:front] = 'U'
+      when 'U'
+        @direction[:front] = 'N'
+      when 'N'
+        @direction[:front] = 'D'
+      when 'D'
+        @direction[:front] = 'S'
+      end
+    elsif @direction[:left] == 'S'
+      case @direction[:front]
+      when 'W'
+        @direction[:front] = 'U'
+      when 'U'
+        @direction[:front] = 'E'
+      when 'E'
+        @direction[:front] = 'D'
+      when 'D'
+        @direction[:front] = 'W'
+      end
+    elsif @direction[:left] == 'U'
+      case @direction[:front]
+      when 'N'
+        @direction[:front] = 'E'
+      when 'E'
+        @direction[:front] = 'S'
+      when 'S'
+        @direction[:front] = 'W'
+      when 'W'
+        @direction[:front] = 'N'
+      end
+    elsif @direction[:left] == 'D'
+      case @direction[:front]
+      when 'N'
+        @direction[:front] = 'W'
+      when 'W'
+        @direction[:front] = 'S'
+      when 'S'
+        @direction[:front] = 'E'
+      when 'E'
+        @direction[:front] = 'N'
+      end
+    end
   end
 
   def opposite(dir)
